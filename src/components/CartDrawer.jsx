@@ -542,7 +542,23 @@ const CartDrawer = () => {
                   <span style={{ opacity: 0.5 }}>/</span>
                   <span className="urdu-text" style={{ fontSize: '1.2rem', marginTop: '-3px' }}>وقت</span>
                 </h4>
-                <div style={{ transform: 'scale(0.9)', transformOrigin: 'top center' }}>
+                <style>{`
+                  .react-datepicker--time-only,
+                  .react-datepicker__month-container { display: inline-block !important; }
+                  .react-datepicker__time-container {
+                    float: right !important;
+                    display: inline-block !important;
+                    border-left: 1px solid rgba(255,255,255,0.1) !important;
+                    width: 80px !important;
+                  }
+                  .react-datepicker {
+                    display: flex !important;
+                    flex-direction: row !important;
+                    flex-wrap: nowrap !important;
+                    align-items: flex-start !important;
+                  }
+                `}</style>
+                <div style={{ transform: isMobile ? 'scale(0.82)' : 'scale(0.9)', transformOrigin: 'top center' }}>
                   <DatePicker
                     selected={deliveryDate} onChange={(date) => setDeliveryDate(date)}
                     showTimeSelect timeFormat="HH:mm" timeIntervals={30} timeCaption="Time"
