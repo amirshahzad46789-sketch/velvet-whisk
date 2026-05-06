@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="glass-panel" style={{ padding: '1rem 1rem', marginTop: '2rem', borderRadius: '0', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', background: 'rgba(20, 20, 20, 0.95)' }}>
+    <footer className="glass-panel" style={{ padding: '1rem 1rem', marginTop: '2rem', borderRadius: '0', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', background: 'rgba(20, 20, 20, 0.95)', position: 'relative', zIndex: 10 }}>
       <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem', textAlign: 'center' }}>
         
         {/* Row 1: Brand, Tagline, and Navigation */}
@@ -18,18 +18,11 @@ const Footer = () => {
             {[
               { href: "#", en: "Home", ur: "ہوم" },
               { href: "#menu", en: "Menu", ur: "مینو" },
-              { href: "#reviews", en: "Reviews", ur: "ریویوز" },
-              { href: "/admin", en: "Admin", ur: "ایڈمن", isRoute: true }
+              { href: "#reviews", en: "Reviews", ur: "ریویوز" }
             ].map((link, idx) => (
-              link.isRoute ? (
-                <Link key={idx} to={link.href} className="text-gold footer-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', fontWeight: '500' }}>
-                  {link.en} <span className="urdu-text" style={{ fontSize: '0.9rem' }}>({link.ur})</span>
-                </Link>
-              ) : (
-                <a key={idx} href={link.href} className="text-gold footer-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', fontWeight: '500' }}>
-                  {link.en} <span className="urdu-text" style={{ fontSize: '0.9rem' }}>({link.ur})</span>
-                </a>
-              )
+              <a key={idx} href={link.href} className="text-gold footer-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', fontWeight: '500' }}>
+                {link.en} <span className="urdu-text" style={{ fontSize: '0.9rem' }}>({link.ur})</span>
+              </a>
             ))}
           </div>
         </div>
