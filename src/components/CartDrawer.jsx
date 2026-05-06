@@ -215,6 +215,7 @@ const CartDrawer = () => {
     lines.push('---------------------------');
     lines.push('⚠️ *Note:* Please Press (Ctrl+V) or Paste to send the Bill Image also.');
 
+
     const message = lines.join('\n');
 
     // Use api.whatsapp.com with URLSearchParams for proper UTF-8 encoding
@@ -392,14 +393,14 @@ const CartDrawer = () => {
           ) : (
             <>
               {isMobile && (
-                <div className="mobile-cart-tabs">
-                  <button className={activeMobileTab === 1 ? 'active' : ''} onClick={() => setActiveMobileTab(1)}>1. Order</button>
-                  <button className={activeMobileTab === 2 ? 'active' : ''} onClick={() => setActiveMobileTab(2)}>2. Date</button>
-                  <button className={activeMobileTab === 3 ? 'active' : ''} onClick={() => setActiveMobileTab(3)}>3. Details</button>
+                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+                  <button onClick={() => setActiveMobileTab(1)} style={{ flex: 1, padding: '0.5rem', background: activeMobileTab === 1 ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)', border: activeMobileTab === 1 ? '1px solid var(--primary)' : '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: activeMobileTab === 1 ? 'var(--primary)' : 'white', cursor: 'pointer', fontFamily: 'var(--font-en)', fontWeight: 600, fontSize: '0.8rem' }}>Order</button>
+                  <button onClick={() => setActiveMobileTab(2)} style={{ flex: 1, padding: '0.5rem', background: activeMobileTab === 2 ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)', border: activeMobileTab === 2 ? '1px solid var(--primary)' : '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: activeMobileTab === 2 ? 'var(--primary)' : 'white', cursor: 'pointer', fontFamily: 'var(--font-en)', fontWeight: 600, fontSize: '0.8rem' }}>Date</button>
+                  <button onClick={() => setActiveMobileTab(3)} style={{ flex: 1, padding: '0.5rem', background: activeMobileTab === 3 ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)', border: activeMobileTab === 3 ? '1px solid var(--primary)' : '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: activeMobileTab === 3 ? 'var(--primary)' : 'white', cursor: 'pointer', fontFamily: 'var(--font-en)', fontWeight: 600, fontSize: '0.8rem' }}>Details</button>
                 </div>
               )}
 
-              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1.2fr', gap: '1.5rem', flex: 1, overflow: 'hidden' }} className="checkout-master-grid">
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1.2fr', gap: '1.5rem', flex: 1, minHeight: 0 }} className="checkout-master-grid">
                 
                 {/* Column 1: Order Summary (Items List) */}
                 {(!isMobile || activeMobileTab === 1) && (
@@ -593,9 +594,21 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
     </p>
 
     {receiptImage && !isProcessing && (
-      <div style={{ marginBottom: '1.5rem', border: '2px solid var(--primary)', borderRadius: '10px', overflow: 'hidden', maxWidth: '250px' }}>
-        <p style={{ margin: 0, padding: '5px', background: 'var(--primary)', color: 'black', fontSize: '12px', fontWeight: 'bold' }}>Long Press (or Right Click) below to Copy Receipt</p>
-        <img src={receiptImage} alt="Receipt" style={{ width: '100%', display: 'block' }} />
+      <div style={{ marginBottom: '1.5rem', border: '2px solid var(--primary)', borderRadius: '10px', overflow: 'hidden', maxWidth: '280px', width: '100%' }}>
+        <p style={{ margin: 0, padding: '6px', background: 'var(--primary)', color: 'black', fontSize: '11px', fontWeight: 'bold', textAlign: 'center' }}>📋 Long Press image to Copy / Save</p>
+        <img 
+          src={receiptImage} 
+          alt="Receipt" 
+          style={{ width: '100%', display: 'block', cursor: 'pointer' }}
+          onContextMenu={(e) => e.stopPropagation()}
+        />
+        <a 
+          href={receiptImage} 
+          download={`VelvetWhisk_Receipt_${Date.now()}.jpg`}
+          style={{ display: 'block', padding: '6px', background: 'rgba(212,175,55,0.15)', color: 'var(--primary)', textAlign: 'center', fontSize: '11px', fontWeight: 'bold', textDecoration: 'none' }}
+        >
+          ⬇️ Save Receipt Image
+        </a>
       </div>
     )}
     
