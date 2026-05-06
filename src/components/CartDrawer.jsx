@@ -610,20 +610,42 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
     </p>
 
     {receiptImage && !isProcessing && (
-      <div style={{ marginBottom: '1.5rem', border: '2px solid var(--primary)', borderRadius: '10px', overflow: 'hidden', maxWidth: '280px', width: '100%' }}>
-        <p style={{ margin: 0, padding: '6px', background: 'var(--primary)', color: 'black', fontSize: '11px', fontWeight: 'bold', textAlign: 'center' }}>📋 Long Press image to Copy / Save</p>
-        <img 
-          src={receiptImage} 
-          alt="Receipt" 
-          style={{ width: '100%', display: 'block', cursor: 'pointer' }}
-          onContextMenu={(e) => e.stopPropagation()}
-        />
-        <a 
-          href={receiptImage} 
+      <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+        <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', userSelect: 'none', WebkitUserSelect: 'none' }}>
+          📋 Long Press to Copy
+        </span>
+        <div style={{
+          width: '90px', height: '120px',
+          border: '2px solid var(--primary)',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          WebkitTouchCallout: 'default',
+          cursor: 'pointer'
+        }}>
+          <img
+            src={receiptImage}
+            alt="Receipt"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'top',
+              display: 'block',
+              pointerEvents: 'auto',
+              WebkitTouchCallout: 'default',
+              userSelect: 'none',
+              WebkitUserSelect: 'none'
+            }}
+          />
+        </div>
+        <a
+          href={receiptImage}
           download={`VelvetWhisk_Receipt_${Date.now()}.jpg`}
-          style={{ display: 'block', padding: '6px', background: 'rgba(212,175,55,0.15)', color: 'var(--primary)', textAlign: 'center', fontSize: '11px', fontWeight: 'bold', textDecoration: 'none' }}
+          style={{ fontSize: '0.7rem', color: 'var(--primary)', textDecoration: 'none', fontWeight: 'bold' }}
         >
-          ⬇️ Save Receipt Image
+          ⬇️ Save Image
         </a>
       </div>
     )}
