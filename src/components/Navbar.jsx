@@ -35,6 +35,11 @@ const Navbar = () => {
     <nav className="glass-panel" style={{
       position: 'sticky', top: '1rem', zIndex: 100, padding: '0.6rem 1.5rem', 
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      background: 'rgba(10, 12, 20, 0.92)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      border: '1px solid var(--glass-border)',
+      boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
       margin: '0 1rem', borderRadius: '50px'
     }}>
       <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
