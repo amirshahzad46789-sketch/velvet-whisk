@@ -28,11 +28,7 @@ const Navbar = () => {
     { id: 'dark-gold', color: '#D4AF37', label: 'Gold' },
     { id: 'light-rose', color: '#D67D81', label: 'Rose' },
     { id: 'dark-royal', color: '#9D50BB', label: 'Royal' },
-    { id: 'light-mint', color: '#38A169', label: 'Mint' },
-    { id: 'dark-ocean', color: '#00E5FF', label: 'Ocean' },
-    { id: 'dark-brown', color: '#C68642', label: 'Brown' },
-    { id: 'light-cream', color: '#F5E6BE', label: 'Cream' },
-    { id: 'charcoal-silver', color: '#E0E0E0', label: 'Silver' }
+    { id: 'light-mint', color: '#38A169', label: 'Mint' }
   ];
 
   return (
@@ -76,80 +72,4 @@ const Navbar = () => {
                 width: '18px', height: '18px', borderRadius: '50%', background: t.color,
                 border: theme === t.id ? '2px solid white' : '1px solid rgba(255,255,255,0.2)',
                 cursor: 'pointer', padding: 0, transition: 'all 0.3s ease',
-                boxShadow: theme === t.id ? `0 0 10px ${t.color}` : 'none'
-              }}
-              title={t.label}
-            />
-          ))}
-        </div>
-      </div>
-      
-      <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-        <ul className="nav-links">
-          <li><a href="/" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Home</a></li>
-          <li><a href="#menu" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Menu</a></li>
-          <li><a href="#gluten-free" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem' }}>Gluten Free</a></li>
-          <li><a href="/admin" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Admin</a></li>
-        </ul>
-
-        <button 
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="btn-outline mobile-only-flex" 
-          style={{ padding: '0.5rem', borderRadius: '50%', cursor: 'pointer', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <Menu size={20} />
-        </button>
-
-        <button 
-          onClick={toggleCart}
-          className="btn-outline" 
-          style={{ position: 'relative', padding: '0.5rem', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <ShoppingBag size={20} />
-          {itemCount > 0 && (
-            <span style={{
-              position: 'absolute', top: '-6px', right: '-6px',
-              backgroundColor: '#ef233c', color: 'white',
-              borderRadius: '50%', width: '18px', height: '18px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '10px', fontWeight: 'bold', boxShadow: '0 0 10px rgba(239,35,60,0.5)'
-            }}>
-              {itemCount}
-            </span>
-          )}
-        </button>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="mobile-menu-overlay mobile-only-flex">
-          <button 
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}
-          >
-            <X size={30} />
-          </button>
-          <a href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-          <a href="#menu" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
-          <a href="#gluten-free" onClick={() => setIsMobileMenuOpen(false)}>Gluten Free</a>
-          <a href="/admin" onClick={() => setIsMobileMenuOpen(false)}>Admin Panel</a>
-          
-          <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '20px' }}>
-            {themes.map(t => (
-              <button
-                key={t.id}
-                onClick={() => { setTheme(t.id); setIsMobileMenuOpen(false); }}
-                style={{
-                  width: '30px', height: '30px', borderRadius: '50%', background: t.color,
-                  border: theme === t.id ? '2px solid white' : '1px solid rgba(255,255,255,0.2)',
-                  cursor: 'pointer', padding: 0
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
-
-export default Navbar;
+                boxShadow: theme === t.id ? `0 0 10px ${t
