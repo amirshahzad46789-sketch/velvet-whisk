@@ -211,6 +211,9 @@ const CartDrawer = () => {
     lines.push('---------------------------');
     lines.push('');
     lines.push(folded + ' *Thank you for choosing Velvet Whisk!*');
+    lines.push('');
+    lines.push('---------------------------');
+    lines.push('⚠️ *Note:* Please Press (Ctrl+V) or Paste to send the Bill Image also.');
 
     const message = lines.join('\n');
 
@@ -599,7 +602,7 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
     <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '400px', fontSize: '0.9rem' }}>
       {isProcessing 
         ? 'Please wait while we generate your premium receipt...' 
-        : 'Your delicious treats are just one step away!'
+        : 'Your delicious treats are just one step away! After clicking below, press Ctrl+V in WhatsApp to send your receipt.'
       }
     </p>
 
