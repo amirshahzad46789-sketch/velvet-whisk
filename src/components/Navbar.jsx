@@ -28,7 +28,11 @@ const Navbar = () => {
     { id: 'dark-gold', color: '#D4AF37', label: 'Gold' },
     { id: 'light-rose', color: '#D67D81', label: 'Rose' },
     { id: 'dark-royal', color: '#9D50BB', label: 'Royal' },
-    { id: 'light-mint', color: '#38A169', label: 'Mint' }
+    { id: 'light-mint', color: '#38A169', label: 'Mint' },
+    { id: 'dark-ocean', color: '#00E5FF', label: 'Ocean' },
+    { id: 'dark-brown', color: '#C68642', label: 'Brown' },
+    { id: 'light-cream', color: '#F5E6BE', label: 'Cream' },
+    { id: 'charcoal-silver', color: '#E0E0E0', label: 'Silver' }
   ];
 
   return (
@@ -85,6 +89,7 @@ const Navbar = () => {
           <li><a href="/" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Home</a></li>
           <li><a href="#menu" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Menu</a></li>
           <li><a href="#gluten-free" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem' }}>Gluten Free</a></li>
+          <li><a href="/admin" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Admin</a></li>
         </ul>
 
         <button 
@@ -126,6 +131,7 @@ const Navbar = () => {
           <a href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
           <a href="#menu" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
           <a href="#gluten-free" onClick={() => setIsMobileMenuOpen(false)}>Gluten Free</a>
+          <a href="/admin" onClick={() => setIsMobileMenuOpen(false)}>Admin Panel</a>
           
           <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '20px' }}>
             {themes.map(t => (
