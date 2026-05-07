@@ -234,7 +234,7 @@ const Home = () => {
           
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.8 }}
-            className="urdu-text" style={{ fontSize: '1.8rem', marginBottom: '2rem', color: 'var(--text-main)' }}
+            className="urdu-text" style={{ fontSize: '1.8rem', marginBottom: '2rem', color: 'var(--text-main)', display: 'block', direction: 'rtl', textAlign: 'center', width: '100%' }}
           >
             گھر کی بنی ہوئی تازہ اور پریمیم بیکری آئٹمز، خاص آپ کے لیے۔
           </motion.p>
