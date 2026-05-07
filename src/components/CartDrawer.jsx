@@ -50,16 +50,56 @@ const CartDrawer = () => {
   const minDate = addDays(new Date(), 1);
 
 
+  // Fetch Jameel Noori Nastaleeq as base64 so mobile can use it without CDN
+  const fetchFontAsBase64 = async () => {
+    const urls = [
+      'https://cdn.jsdelivr.net/gh/mushfiq/urdo-webfont@master/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2',
+      'https://cdn.jsdelivr.net/gh/mushfiq/urdo-webfont@master/JameelNooriNastaleeq/JameelNooriNastaleeq.woff',
+    ];
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, { mode: 'cors', cache: 'force-cache' });
+        if (!res.ok) continue;
+        const buf = await res.arrayBuffer();
+        const b64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+        const mime = url.endsWith('.woff2') ? 'font/woff2' : 'font/woff';
+        return `data:${mime};base64,${b64}`;
+      } catch (_) { continue; }
+    }
+    return null;
+  };
+
   const generateReceipt = async () => {
     const element = document.getElementById('receipt-template');
     if (!element) return;
 
-    // The element is now permanently rendered off-screen so fonts are already loaded.
+    // Inject font as base64 into receipt style so mobile doesn't need CDN
+    try {
+      const fontDataUrl = await fetchFontAsBase64();
+      if (fontDataUrl) {
+        const existingStyle = element.querySelector('#jameel-font-inline');
+        if (existingStyle) existingStyle.remove();
+        const style = document.createElement('style');
+        style.id = 'jameel-font-inline';
+        style.textContent = `
+          @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('${fontDataUrl}') format('${fontDataUrl.includes('woff2') ? 'woff2' : 'woff'}');
+            font-weight: normal;
+            font-style: normal;
+          }
+        `;
+        element.prepend(style);
+      }
+    } catch (_) {}
+
     // Wait for React state to update the receipt template values
-    await new Promise(r => setTimeout(r, 800));
+    await new Promise(r => setTimeout(r, 1200));
     if (document.fonts && document.fonts.ready) {
       await document.fonts.ready;
     }
+    // Extra wait for font to actually render after injection
+    await new Promise(r => setTimeout(r, 500));
 
     // Wait for ALL images inside receipt to finish loading
     const imgEls = Array.from(element.querySelectorAll('img'));
@@ -76,6 +116,18 @@ const CartDrawer = () => {
         scale: 1.5,
         backgroundColor: '#0B0F19',
         logging: false,
+        onclone: (clonedDoc) => {
+          // Ensure font style is also in cloned document for html2canvas
+          const clonedEl = clonedDoc.getElementById('receipt-template');
+          if (clonedEl) {
+            const existing = clonedEl.querySelector('#jameel-font-inline');
+            if (!existing) {
+              const s = clonedDoc.createElement('style');
+              s.textContent = element.querySelector('#jameel-font-inline')?.textContent || '';
+              clonedEl.prepend(s);
+            }
+          }
+        }
       });
 
       const imgData = canvas.toDataURL('image/jpeg', 0.7);
@@ -586,10 +638,12 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
     style={{ 
       position: 'fixed', inset: 0, zIndex: 2000, 
       background: 'rgba(11, 15, 25, 0.98)', display: 'flex', 
-      flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      backdropFilter: 'blur(15px)', padding: '2rem', textAlign: 'center'
+      flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',
+      backdropFilter: 'blur(15px)', textAlign: 'center',
+      overflowY: 'auto', WebkitOverflowScrolling: 'touch'
     }}
   >
+    <div style={{ width: '100%', maxWidth: '420px', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 'auto', padding: '2rem 1.5rem' }}>
     <div style={{ position: 'relative', width: '160px', height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
       <motion.div 
         animate={isProcessing ? { rotate: 360 } : { rotate: [0, 10, -10, 10, 0], scale: [1, 1.1, 1] }} 
@@ -691,6 +745,7 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
         100% { transform: scale(1.2); opacity: 0; }
       }
     `}</style>
+    </div>
   </motion.div>
 );
 
