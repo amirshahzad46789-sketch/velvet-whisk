@@ -315,7 +315,9 @@ const CartDrawer = () => {
           @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
           @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('https://cdn.jsdelivr.net/gh/mushfiq/urdo-webfont@master/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2') format('woff2');
+            src: url('/fonts/JameelNooriNastaleeq.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
           }
         `}</style>
         <div style={{ textAlign: 'center', borderBottom: '1px solid rgba(212,175,55,0.3)', paddingBottom: '15px', marginBottom: '20px' }}>
