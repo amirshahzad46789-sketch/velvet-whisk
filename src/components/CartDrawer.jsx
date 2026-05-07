@@ -577,7 +577,7 @@ const CartDrawer = () => {
 
                 <button 
                   className="btn btn-primary" 
-                  style={{ width: '100%', padding: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem' }}
+                  style={{ width: '100%', padding: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem', marginTop: '0.8rem' }}
                   onClick={handleWhatsAppCheckout}
                 >
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WA" style={{ width: '18px' }}/>
