@@ -87,12 +87,15 @@ const AddReviewFloating = () => {
 
               <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                 <h2 className="title-medium text-gold" style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>Share Your Experience</h2>
-                <p className="urdu-text" style={{ fontSize: '1.2rem', color: 'var(--primary)' }}>اپنی رائے کا اظہار کریں</p>
+                <p className="urdu-text" style={{ fontSize: '1.4rem', color: 'var(--primary)' }}>اپنی رائے کا اظہار کریں</p>
               </div>
 
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
                 <div>
-                  <label style={{ color: 'var(--primary)', fontSize: '0.8rem', marginBottom: '5px', display: 'block' }}>Your Name / آپ کا نام</label>
+                  <label style={{ color: 'var(--primary)', marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '0.85rem', fontFamily: 'Outfit, sans-serif' }}>Your Name /</span>
+                    <span className="urdu-text" style={{ fontSize: '1.3rem', fontFamily: "'Jameel Noori Nastaleeq', serif", lineHeight: '2' }}>آپ کا نام</span>
+                  </label>
                   <input 
                     type="text" 
                     required 
@@ -104,7 +107,10 @@ const AddReviewFloating = () => {
                 </div>
 
                 <div>
-                  <label style={{ color: 'var(--primary)', fontSize: '0.8rem', marginBottom: '10px', display: 'block' }}>Rating / ریٹنگ</label>
+                  <label style={{ color: 'var(--primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '0.85rem', fontFamily: 'Outfit, sans-serif' }}>Rating /</span>
+                    <span className="urdu-text" style={{ fontSize: '1.3rem', fontFamily: "'Jameel Noori Nastaleeq', serif", lineHeight: '2' }}>ریٹنگ</span>
+                  </label>
                   <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
@@ -132,7 +138,7 @@ const AddReviewFloating = () => {
                 </div>
 
                 <div>
-                  <label style={{ color: 'var(--primary)', fontSize: '0.8rem', marginBottom: '5px', display: 'block' }}>تبصرہ (اردو)</label>
+                  <label style={{ color: 'var(--primary)', marginBottom: '5px', display: 'block', fontFamily: "'Jameel Noori Nastaleeq', serif", fontSize: '1.5rem', lineHeight: '2.2', textAlign: 'right', direction: 'rtl' }}>تبصرہ (اردو)</label>
                   <textarea 
                     required 
                     rows="2"
@@ -140,7 +146,7 @@ const AddReviewFloating = () => {
                     value={formData.urduText}
                     onChange={(e) => setFormData({...formData, urduText: e.target.value})}
                     className="urdu-text"
-                    style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '12px', borderRadius: '8px', color: 'white', fontSize: '1.1rem' }}
+                    style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '12px', borderRadius: '8px', color: 'white', fontSize: '1.3rem', fontFamily: "'Jameel Noori Nastaleeq', serif", direction: 'rtl' }}
                   ></textarea>
                 </div>
 
@@ -149,7 +155,9 @@ const AddReviewFloating = () => {
                   className="btn btn-primary" 
                   style={{ width: '100%', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '1rem' }}
                 >
-                  <Send size={18} /> Submit Review / ریویو بھیجیں
+                  <Send size={18} />
+                  <span style={{ fontFamily: 'Outfit, sans-serif', letterSpacing: '1px' }}>SUBMIT REVIEW /</span>
+                  <span style={{ fontFamily: "'Jameel Noori Nastaleeq', serif", fontSize: '1.4rem', lineHeight: '1.8', fontWeight: 'normal', letterSpacing: 'normal', textTransform: 'none' }}>ریویو بھیجیں</span>
                 </button>
               </form>
             </motion.div>
