@@ -3,9 +3,7 @@
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/mushfiq/urdo-webfont@master/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/mushfiq/urdo-webfont@master/JameelNooriNastaleeq/JameelNooriNastaleeq.woff') format('woff'),
-       url('https://raw.githack.com/mushfiq/urdo-webfont/master/JameelNooriNastaleeq/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('/fonts/JameelNooriNastaleeq.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
