@@ -72,6 +72,7 @@
   --hero-overlay: rgba(11, 26, 18, 0.85);
 }
 
+
 body {
   font-family: var(--font-en), var(--font-ur), sans-serif;
   background: var(--bg-main);
@@ -101,12 +102,21 @@ button, input, select, textarea {
 }
 
 .urdu-text {
-  font-family: var(--font-ur);
-  line-height: 2.2;
-  direction: rtl;
-  letter-spacing: normal;
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 2.4 !important;
+  direction: rtl !important;
+  letter-spacing: normal !important;
+  unicode-bidi: embed;
 }
 
+/* Mixed bilingual labels (e.g. 'Your Name / آپ کا نام') */
+.urdu-label {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 2.4 !important;
+  letter-spacing: normal !important;
+}
+
+/* Glassmorphism Classes */
 .glass-panel {
   background: var(--glass-light);
   backdrop-filter: blur(16px);
@@ -156,6 +166,7 @@ button, input, select, textarea {
 .container { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
 .section-padding { padding: 6rem 0; }
 
+/* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
   padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
@@ -183,10 +194,11 @@ button, input, select, textarea {
   color: var(--primary);
 }
 .btn-outline:hover {
-  background: rgba(212,175,55,0.1);
+  background: rgba(212, 175, 55, 0.1);
   box-shadow: var(--shadow-glow);
 }
 
+/* Modals & Drawers */
 .overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
   z-index: 1000; display: flex; align-items: center; justify-content: center;
@@ -198,6 +210,7 @@ button, input, select, textarea {
   position: relative; z-index: 1001;
 }
 
+/* Grid System */
 .grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 .grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .grid-cols-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
@@ -205,6 +218,7 @@ button, input, select, textarea {
 @media (max-width: 900px) { .grid-cols-3 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: 1fr; } }
 
+/* Badges */
 .badge {
   padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 800;
   text-transform: uppercase; letter-spacing: 1.5px; backdrop-filter: blur(8px);
@@ -223,6 +237,7 @@ button, input, select, textarea {
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
+/* Custom Inputs */
 input, select, textarea {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
@@ -239,11 +254,13 @@ input:focus, select:focus {
 }
 ::-webkit-calendar-picker-indicator { filter: invert(1); }
 
+/* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+/* DatePicker Dark Theme */
 .react-datepicker {
   background-color: #1A1A2E !important;
   border: 1px solid var(--primary) !important;
@@ -254,7 +271,7 @@ input:focus, select:focus {
   box-shadow: 0 10px 40px rgba(0,0,0,0.8) !important;
   transform: scale(0.85);
   transform-origin: top center;
-  margin-bottom: -40px;
+  margin-bottom: -40px; /* Offset the scale empty space */
 }
 .react-datepicker__header {
   background-color: #0B0F19 !important;
@@ -288,6 +305,7 @@ input:focus, select:focus {
   display: none !important;
 }
 
+/* Table & Admin Styles */
 table th {
   color: var(--primary);
   font-family: 'Outfit', sans-serif;
@@ -313,7 +331,7 @@ option {
   background: #111;
   color: white;
 }
-
+/* Admin Specific UI */
 .btn-icon {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -341,6 +359,43 @@ option {
 .text-red {
   color: #ef233c;
 }
+/* DatePicker Customization */
+.react-datepicker {
+  font-family: var(--font-en) !important;
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--bg-main) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.react-datepicker__current-month, 
+.react-datepicker__day-name, 
+.react-datepicker__day {
+  color: white !important;
+  font-family: var(--font-en) !important;
+}
+
+.react-datepicker__time-container {
+  border-left: 1px solid var(--glass-border) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+.react-datepicker__time {
+  background-color: var(--bg-secondary) !important;
+}
+
+.react-datepicker__time-list-item {
+  color: white !important;
+  font-family: var(--font-en) !important;
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: var(--primary) !important;
+  color: black !important;
+}
 
 .checkout-input {
   font-family: 'Outfit', 'Jameel Noori Nastaleeq', sans-serif !important;
@@ -353,15 +408,40 @@ option {
   font-family: 'Outfit', sans-serif !important;
 }
 
+
+
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.5); opacity: 0; }
 }
 
-.urdu-text {
+/* Urdu text in placeholders */
+.urdu-text::placeholder {
   font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  font-size: 1.3rem !important;
+  direction: rtl !important;
+  color: rgba(255,255,255,0.3) !important;
 }
 
+/* Urdu text inside buttons, spans, and mixed elements */
+button .urdu-text,
+span.urdu-text,
+p.urdu-text,
+h2.urdu-text,
+h3.urdu-text,
+h4.urdu-text,
+label.urdu-text,
+a .urdu-text {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 2.4 !important;
+  direction: rtl !important;
+  letter-spacing: normal !important;
+  display: inline-block !important;
+}
+
+/* ========================================================================= */
+/* MOBILE RESPONSIVENESS - ISOLATED (NO IMPACT ON DESKTOP > 900px)          */
+/* ========================================================================= */
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -381,6 +461,7 @@ option {
   .desktop-only { display: none !important; }
   .desktop-only-flex { display: none !important; }
 
+  /* Navbar Mobile Layout */
   .nav-links { display: none !important; }
   
   .mobile-menu-overlay {
@@ -391,5 +472,39 @@ option {
 
   .mobile-menu-overlay a {
     color: var(--primary); font-size: 1.5rem; text-decoration: none; font-weight: 700;
+  }
+
+  /* Cart Drawer Mobile Layout */
+  .checkout-master-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .mobile-cart-tabs {
+    display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;
+  }
+
+  .mobile-cart-tabs button {
+    flex: 1; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: white; cursor: pointer; font-family: var(--font-en); font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .mobile-cart-tabs button.active {
+    background: rgba(212,175,55,0.2); border-color: var(--primary); color: var(--primary);
+  }
+
+  /* Force side-by-side date and time on mobile */
+  .react-datepicker {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .react-datepicker__time-container {
+    width: 85px !important;
   }
 }
