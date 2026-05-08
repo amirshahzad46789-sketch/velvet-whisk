@@ -35,7 +35,7 @@ const Admin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === 'admin123') setIsLoggedIn(true);
+    if (password === 'rima@123') setIsLoggedIn(true);
     else alert('Incorrect Password!');
   };
 

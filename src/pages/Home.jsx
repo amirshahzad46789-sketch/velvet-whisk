@@ -129,7 +129,7 @@ const Home = () => {
 
   const submitQePass = (e) => {
     e.preventDefault();
-    if (qePassword === 'admin123') {
+    if (qePassword === 'rima@123') {
       setQeForm({
         image: resolveImage(qeProduct, localImages),
         price: qeProduct.price,
@@ -902,7 +902,7 @@ const Home = () => {
               {ksStep === 'pass' ? (
                 <form onSubmit={(e) => {
                   e.preventDefault();
-                  if (ksPassword === 'admin123') {
+                  if (ksPassword === 'rima@123') {
                     setKsStep('select');
                     setKsError('');
                   } else {
