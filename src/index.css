@@ -512,4 +512,36 @@ a .urdu-text {
   .react-datepicker__time-container {
     width: 85px !important;
   }
+  /* Cart Drawer / Modal Mobile Fixes */
+  .modal {
+    padding: 1rem 0.8rem 1rem 1rem !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(212,175,55,0.4) transparent !important;
+  }
+
+  .modal::-webkit-scrollbar {
+    width: 4px !important;
+  }
+
+  .modal::-webkit-scrollbar-thumb {
+    background: rgba(212,175,55,0.3) !important;
+    border-radius: 4px !important;
+  }
+
+  /* Smaller inputs on mobile */
+  .checkout-input {
+    font-size: 0.9rem !important;
+    padding: 5px 8px !important;
+  }
+
+  /* Payment buttons smaller on mobile */
+  .checkout-master-grid button[style*="0.6rem"] {
+    font-size: 0.55rem !important;
+    padding: 0.3rem !important;
+  }
+
+  /* Subtotal / Total box smaller on mobile */
+  .glass-panel {
+    padding: 0.6rem !important;
+  }
 }
