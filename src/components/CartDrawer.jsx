@@ -427,10 +427,10 @@ const CartDrawer = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(212,175,55,0.3)', paddingBottom: '0.8rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <ShoppingCart className="text-gold" />
-              <h2 className="text-gold" style={{ margin: 0, fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <h2 className="text-gold" style={{ margin: 0, fontSize: isMobile ? '1rem' : '1.5rem', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
                 <span style={{ fontFamily: 'var(--font-en)' }}>Secure Checkout</span>
                 <span style={{ fontSize: '0.8em', opacity: 0.5 }}>/</span>
-                <span className="urdu-text" style={{ fontSize: '1.6rem', marginTop: '-5px' }}>آرڈر مکمل کریں</span>
+                <span className="urdu-text" style={{ fontSize: isMobile ? '1rem' : '1.6rem', marginTop: '-5px' }}>آرڈر مکمل کریں</span>
               </h2>
             </div>
             <button onClick={toggleCart} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', padding: '8px', borderRadius: '50%', cursor: 'pointer' }}>
@@ -560,7 +560,7 @@ const CartDrawer = () => {
                   </div>
                 </div>
 
-                <div className="glass-panel" style={{ padding: '0.8rem', background: 'rgba(212,175,55,0.05)', border: '1px solid var(--primary)' }}>
+                <div className="glass-panel" style={{ padding: isMobile ? '0.5rem' : '0.8rem', background: 'rgba(212,175,55,0.05)', border: '1px solid var(--primary)', marginTop: isMobile ? '0.6rem' : '0' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.2rem', fontSize: '0.8rem' }}>
                     <span style={{ color: 'var(--text-muted)' }}>Subtotal:</span>
                     <span>Rs. {subtotal}</span>
