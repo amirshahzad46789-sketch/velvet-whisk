@@ -714,28 +714,26 @@ const SuccessOverlay = ({ onClose, onRetry, isProcessing, receiptImage }) => (
     </p>
 
     {!isProcessing && (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '300px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', width: '100%', maxWidth: '280px' }}>
         <button 
           onClick={onRetry}
           className="btn btn-primary" 
-          style={{ width: '100%', padding: '0.7rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textTransform: 'none', letterSpacing: '0' }}
+          style={{ width: '100%', padding: '0.45rem 0.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textTransform: 'none', letterSpacing: '0', lineHeight: '1.3' }}
         >
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WA" style={{ width: '20px' }}/>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Proceed to WhatsApp</span>
-            <span style={{ opacity: 0.5 }}>|</span>
-            <span className="urdu-text" style={{ fontSize: '1.1rem', marginTop: '-3px' }}>آرڈر مکمل کریں</span>
-          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WA" style={{ width: '16px', flexShrink: 0 }}/>
+          <span style={{ fontWeight: 'bold', fontSize: '0.78rem', fontFamily: 'var(--font-en)' }}>Proceed to WhatsApp</span>
+          <span style={{ opacity: 0.4, fontSize: '0.7rem' }}>|</span>
+          <span className="urdu-text" style={{ fontSize: '0.82rem', lineHeight: '1.2' }}>آرڈر مکمل کریں</span>
         </button>
         
         <button 
           onClick={onClose}
           className="btn btn-outline" 
-          style={{ width: '100%', padding: '0.6rem', opacity: 0.6, fontSize: '0.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+          style={{ width: '100%', padding: '0.35rem 0.8rem', opacity: 0.6, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', lineHeight: '1.3' }}
         >
-          <span>Close</span>
-          <span style={{ opacity: 0.4 }}>/</span>
-          <span className="urdu-text" style={{ fontSize: '1rem', marginTop: '-2px' }}>بند کریں</span>
+          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-en)' }}>Close</span>
+          <span style={{ opacity: 0.4, fontSize: '0.7rem' }}>/</span>
+          <span className="urdu-text" style={{ fontSize: '0.82rem', lineHeight: '1.2' }}>بند کریں</span>
         </button>
       </div>
     )}
