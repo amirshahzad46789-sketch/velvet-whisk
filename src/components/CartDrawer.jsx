@@ -441,7 +441,7 @@ const CartDrawer = () => {
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '4rem' }}>
               <ShoppingCart size={80} color="rgba(212,175,55,0.2)" />
-              <p className="urdu-text" style={{ fontSize: '1.8rem', marginTop: '1rem' }}>آپ کا کارٹ خالی hai!</p>
+              <p className="urdu-text" style={{ fontSize: '1.8rem', marginTop: '1rem' }}>آپ کا کارٹ خالی ہے!</p>
               <button className="btn btn-primary" style={{ marginTop: '2rem' }} onClick={toggleCart}>Start Shopping</button>
             </div>
           ) : (
