@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { ShoppingBag, Clock, Menu, X } from 'lucide-react';
 import useStore from '../store/useStore';
 
@@ -123,13 +124,13 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay — OUTSIDE nav so it's not clipped by border-radius */}
-      {isMobileMenuOpen && (
+      {/* Mobile Menu Overlay — Portal: renders in document.body, no parent clipping */}
+      {isMobileMenuOpen && ReactDOM.createPortal(
         <div style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(10, 12, 20, 0.97)',
-          zIndex: 9999,
+          background: '#0B0F19',
+          zIndex: 99999,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -143,10 +144,10 @@ const Navbar = () => {
           >
             <X size={30} />
           </button>
-          <a href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-          <a href="#menu" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
-          <a href="#gluten-free" onClick={() => setIsMobileMenuOpen(false)}>Gluten Free</a>
-          <a href="/admin" onClick={() => setIsMobileMenuOpen(false)}>Admin Panel</a>
+          <a href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--primary)', fontSize: '1.5rem', textDecoration: 'none', fontWeight: 700 }}>Home</a>
+          <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--primary)', fontSize: '1.5rem', textDecoration: 'none', fontWeight: 700 }}>Menu</a>
+          <a href="#gluten-free" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--primary)', fontSize: '1.5rem', textDecoration: 'none', fontWeight: 700 }}>Gluten Free</a>
+          <a href="/admin" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--primary)', fontSize: '1.5rem', textDecoration: 'none', fontWeight: 700 }}>Admin Panel</a>
           
           <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '20px' }}>
             {themes.map(t => (
@@ -161,9 +162,10 @@ const Navbar = () => {
               />
             ))}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </nav>
+    </>
   );
 };
 
