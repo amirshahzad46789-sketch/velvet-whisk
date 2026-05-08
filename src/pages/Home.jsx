@@ -219,7 +219,7 @@ const Home = () => {
               autoPlay loop muted playsInline controls
               style={{ width: '100%', display: 'block', objectFit: 'cover' }}
             >
-              <source src="/hero-video.mp4" type="video/mp4" />
+              <source src="/welcome bakery.mp4" type="video/mp4" />
             </video>
             {/* Soft gold glow behind video */}
             <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 100px rgba(0,0,0,0.5)', pointerEvents: 'none' }}></div>
