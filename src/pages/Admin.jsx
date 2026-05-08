@@ -143,6 +143,14 @@ const Admin = () => {
     setIsReviewModalOpen(true);
   };
 
+  const closeProductModal = () => {
+    setIsProductModalOpen(false);
+    setEditingProduct(null);
+    setProductForm({
+      name: '', urduName: '', price: '', category: 'cakes', image: '', description: '', urduDescription: '', badges: [], sizes: [], addons: []
+    });
+  };
+
   const closeReviewModal = () => {
     setIsReviewModalOpen(false);
     setEditingReview(null);
